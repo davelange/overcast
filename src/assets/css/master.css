@@ -1,0 +1,132 @@
+@import url('https://fonts.googleapis.com/css2?family=Barlow:wght@400;600&display=swap');
+
+:root {
+    --normal: 400;
+    --heavy: 600;
+
+    --offwhite: #fafafa;
+    
+}
+body {
+    font-family: Barlow, sans-serif;
+    line-height: 1.4;
+    font-size: 100%;
+    background: var(--offwhite);
+}
+html, body, #root {
+    height: 100%;
+}
+.App {
+    height: 100%;    
+}
+.App, .forecast-page {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+h1, h2, h3, p {
+    margin: 0;
+}
+.btn {
+    border: 0;
+    background: 0;
+}
+.flex {
+    display: flex;
+    flex-wrap: wrap;
+}
+.flex__half {
+    width: 50%;
+}
+.flex__full {
+    width: 100%;
+}
+.search {
+    padding: 1rem 2rem;
+    display: flex;
+    position: relative;
+}
+.search__input {
+    border: 0;
+    background: 0;
+    font-weight: var(--heavy);
+    flex: 1 0 auto;
+    text-align: center;
+    padding: 1rem 2rem;
+}
+.search__submit {
+    opacity: .5;
+    position: absolute;
+    right: 1rem;
+    top: 0;
+    bottom: 0;
+    margin: auto;
+}
+.current {
+    padding: 1rem 2rem;    
+    margin-bottom: 1rem;;
+}
+.current__image {
+    margin: 0;   
+    text-align: center;
+}
+.current__temp {    
+    font-size: 2rem;
+    margin-bottom: .5rem;
+}
+.current__desc {
+    text-align: center;
+}
+.current__image .wi {
+    font-size: 3rem;
+}
+.fcast {
+    flex: 1 0 auto;
+    background: indigo;    
+    border-radius: 20px 20px 0 0;
+    position: relative;
+    top: -20px;
+    transition: all .5s ease;
+}
+.dates {
+    justify-content: space-evenly;
+    align-items: center;    
+}
+.dates__item {
+    opacity: .8;
+    transition: all .5s ease;
+}
+.dates__item--active {
+    opacity: 1;    
+}
+.fcast__main {
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1rem;
+}
+.fcast__image {
+    font-size: 5rem;
+    margin-right: 1rem;
+    background: #ffffff22;
+    width: 10rem;
+    height: 10rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+}
+.fcast__maintemp {
+    font-size: 2rem;    
+    font-weight: var(--heavy);
+}
+.fcast__maindesc {
+    opacity: .8;
+}
+.fcast__extra {
+    padding: 1rem 2rem;
+    justify-content: space-between;
+}
+.fcast__label {
+    font-size: .8rem;
+    opacity: .7;
+}

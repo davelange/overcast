@@ -27,14 +27,14 @@ function Forecast({location, setLocation}) {
 
 
     return (
-        <div>
+        <div className="forecast-page">
 
             { current && 
                 <CurrentWeather 
                     weather={current} /> 
             }
             
-            { forecast.list &&
+             { forecast &&
                 <NextDays 
                     forecast={forecast.list}/>
             }
