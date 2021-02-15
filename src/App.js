@@ -14,6 +14,7 @@ function App() {
   const [location, setLocation] = React.useState({city: '', country: ''});
   const [current, setCurrent] = React.useState();
   const [forecast, setForecast] = React.useState();  
+  const [message, setMessage] = React.useState('');
 
   let history = useHistory();
   
@@ -27,14 +28,26 @@ function App() {
 
   async function requestCurrent() {
     let current = await getCurrentWeather(location.city);
-    setCurrent(current);    
-    setLocation({ city: current.name, country: current.sys.country });    
-    themes.setPhase(current);
+    if( current ) {
+      setCurrent(current);    
+      setLocation({ city: current.name, country: current.sys.country });    
+      setMessage('');
+      themes.setPhase(current);
+    }    
+    else {
+      setMessage('We couldn´t find what you are looking for');
+    }
   }
 
   async function requestForecast() {
     let forecast = await getForecast(location.city);
-    setForecast(forecast.list);
+    if( forecast ) {
+      setForecast(forecast.list);
+      setMessage('');
+    }    
+    else {
+      setMessage('We couldn´t find what you are looking for');
+    }
   }  
 
   function setRoute() {
@@ -49,7 +62,8 @@ function App() {
       <div className="lg-flex__half">
         <Search 
           location={location} 
-          setLocation={setLocation}/>
+          setLocation={setLocation}
+          message={message} />
 
         { current &&
           <CurrentWeather 

@@ -3,7 +3,7 @@ import { geoLocate } from '../api/requests';
 import {themes} from '../theme';
 import FeatherIcon from 'feather-icons-react';
 
-function Search({location, setLocation}) {
+function Search({location, setLocation, message}) {
     
     React.useEffect( () => {              
         if( !location.city ) {
@@ -25,7 +25,7 @@ function Search({location, setLocation}) {
     }
 
     return( 
-        <div>
+        <div>        
             <form 
                 onSubmit={ e => handleSubmit(e) } 
                 className="search">
@@ -42,6 +42,7 @@ function Search({location, setLocation}) {
                         <FeatherIcon icon="search" width="16" height="16" stroke={themes.getIconColor().color} />
                 </button>
             </form>
+            <center>{message}</center>
         </div>
     )
 }

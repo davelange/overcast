@@ -1,27 +1,5 @@
 import {isDayTime} from './helpers';
 
-const scale = [
-    {
-        bg: '#fff', color: '#303030', accent: '#5988FF'
-    },
-    {
-        bg: '#83A3F5', color: '#fff', accent: '#F5F936'
-    },
-    {
-        bg: '#5988FF', color: '#fff', accent: '#F3E34D'
-    },
-    {
-        bg: '#F5F936', color: '#333', accent: '#5988FF'
-    },
-    {
-        bg: '#F3E34D', color: '#fff', accent: '#83A3F5'
-    },
-    {
-        bg: '#F9CE36', color: '#fff', accent: '#2C46A0'
-    }
-        
-]
-
 const themes = {
     
     schemes: {
@@ -63,22 +41,6 @@ const themes = {
 
 }
 
-function theme(t) {
-    let item = scale[getScaleItem(t)];    
-    return item;
-}
-
-function getScaleItem(t) {
-    if( t < 5 ) return 0;
-    else if( t < 15 ) return 1;
-    else if( t < 25 ) return 2;
-    else if( t < 30 ) return 3;
-    else if( t < 40 ) return 4;
-    else if( t >= 40 ) return 5;
-    else return 2;
-}
-
 export {
-    theme,
     themes
 }

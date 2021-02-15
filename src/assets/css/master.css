@@ -67,7 +67,6 @@ h1, h2, h3, p {
     margin-bottom: 1rem;;
     position: relative;
 }
-
 .baloon {
     content: "";
     position: absolute;
@@ -76,6 +75,7 @@ h1, h2, h3, p {
     width: 45vmax;
     height: 45vmax;        
     animation: float 20s ease-in-out infinite alternate;    
+    pointer-events: none;
 }
 @keyframes float {
     0% {
@@ -197,6 +197,9 @@ h1, h2, h3, p {
     }
     .current__image {
         font-size: 5rem;
+    }
+    .current__display {
+        margin: 1rem 0;
     }
     .fcast__extra {
         width: 80%;
