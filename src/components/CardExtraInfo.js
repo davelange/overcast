@@ -1,4 +1,4 @@
-import {timeCalc, windSpeed} from '../helpers';
+import {popCalc, windSpeed} from '../helpers';
 
 function CardExtraInfo({weather, expand}) {
 
@@ -11,20 +11,16 @@ function CardExtraInfo({weather, expand}) {
             <div className="fcast__extra">
             <div>
                 <p className="fcast__label">Humidity</p>
-                <p>{weather.humidity}%</p>
+                <p>{weather.main.humidity}%</p>
             </div>                
             <div>
                 <p className="fcast__label">Wind</p>
-                <p>{windSpeed(weather.speed)}</p>
+                <p>{windSpeed(weather.wind.speed)}</p>
             </div>          
             <div>
-                <p className="fcast__label">Sunrise</p>
-                <p>{timeCalc(weather.sunrise)} </p>
-            </div>                
-            <div>
-                <p className="fcast__label">Sunset</p>
-                <p>{timeCalc(weather.sunset)} </p>
-            </div>           
+                <p className="fcast__label">Chance of rain</p>
+                <p>{popCalc(weather.pop)} </p>
+            </div>                            
             </div>     
         </div> 
     )

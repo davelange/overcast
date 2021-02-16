@@ -13,7 +13,7 @@ function ForecastCard({i, weather}) {
         <div 
             className="fcast-card flex" 
             style={themes.getIconColor()}
-            onClick={ () => {console.log('click');setExpand(!expand)} }>
+            onClick={ () => setExpand(!expand) }>
             
             <p className="fcast-card__date">{ getForecastDate( i ) }</p>
             
@@ -23,7 +23,7 @@ function ForecastCard({i, weather}) {
                     className="fcast-card__image"/>
                 <div style={themes.getCardColor()}>
                     <h3 className="fcast-card__maintemp">
-                        { formatTemp(weather.feels_like.day) }
+                        { formatTemp(weather.main.feels_like) }
                     </h3>
                     <p className="fcast-card__maindesc">
                         {weather.weather[0].main}

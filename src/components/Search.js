@@ -1,14 +1,10 @@
 import React from 'react';
-import { geoLocate } from '../api/requests';
 import {themes} from '../theme';
 import FeatherIcon from 'feather-icons-react';
 
 function Search({location, setLocation, message}) {
     
-    React.useEffect( () => {              
-        if( !location.city ) {
-            geoLocate().then( res => setLocation({ city: res.city, country: '' }) );
-        }        
+    React.useEffect( () => {                      
         document.querySelector('.search__input').value = locationName();
     }, [location.country])
     

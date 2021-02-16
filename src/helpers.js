@@ -39,11 +39,16 @@ function isDayTime(data) {
     return curr.getHours() > sunrise.getHours() && curr.getHours() < sunset.getHours();
 }
 
+function popCalc(n) {
+    return `${n*100}%`;
+}
+
 export {
     formatTemp,
     windSpeed,
     timeCalc,
     getForecastDate,
     getLocalTime,
-    isDayTime
+    isDayTime,
+    popCalc
 }
