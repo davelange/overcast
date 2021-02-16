@@ -14,9 +14,6 @@ body {
     font-size: 100%;
     background: var(--offwhite);
 }
-html, body, .App, #root {
-    height: 100%;
-}
 h1, h2, h3, p {
     margin: 0;
 }

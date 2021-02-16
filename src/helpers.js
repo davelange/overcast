@@ -15,8 +15,9 @@ function timeCalc(n) {
 function getForecastDate(i) {
     const offset = i+1;
     const d = new Date();
+    d.setDate( d.getDate()+offset );
     const weekdays = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
-    return `${weekdays[ d.getDay()+offset ]}, ${ d.getDate()+offset }`;
+    return `${weekdays[ d.getDay() ]}, ${ d.getDate() }`;
 }
 
 function getLocalTime(data) {    

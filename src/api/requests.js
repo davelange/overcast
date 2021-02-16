@@ -1,4 +1,4 @@
-const KEY = '';
+import { KEY } from './apiKey.js';
 
 async function geoLocate() {
     const URL = 'http://ip-api.com/json';
