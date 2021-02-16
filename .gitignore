@@ -8,7 +8,7 @@
 # testing
 /coverage
 
-/api/apiKey.js
+/src/api/key.js
 
 # production
 /build
