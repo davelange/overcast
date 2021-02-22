@@ -2,7 +2,7 @@ import React from 'react';
 import './assets/css/normalize.css';
 import './assets/css/master.css';
 import './assets/css/weather-icons.min.css';
-import {geoLocate} from './api/requests';
+import {geo} from './api/requests';
 import {themes} from './theme';
 import Search from './components/Search';
 import CurrentWeather from './containers/CurrentWeather';
@@ -14,7 +14,7 @@ function App() {
   
   React.useEffect( () => {                
     if( !location.city ) {
-      geoLocate().then( res => setLocation({ city: res.city, country: '' }) );
+      geo.locate().then( res => setLocation({ city: res.city, country: '' }) );
     }    
   }, []); 
 

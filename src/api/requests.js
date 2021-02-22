@@ -1,10 +1,6 @@
-import { KEY } from './key.js';
+import { OWM_KEY, ABS_KEY } from './key.js';
 
-async function geoLocate() {
-    const URL = 'http://ip-api.com/json';
-    let req = await fetch(URL);
-    return await req.json();    
-}
+//Cache object
 const cache = {
     current: {},
     forecast: {},
@@ -21,23 +17,50 @@ const cache = {
     }
 }
 
+//Fetch
+const api = {        
+    makeRequest: async function(url) {
+        return await fetch( url );
+    },
+
+    validate: function(res) {        
+        if( res.status !== 200 ) {
+            return false;
+        }
+        else {
+            return res.json();    
+        }
+    },
+
+    get: async function( url ) {
+        let req = await this.makeRequest(url);
+        return this.validate(req);
+    }
+}
+
+//Geo location
+const geo = {
+    key: ABS_KEY,
+
+    async locate() {        
+        return await api.get( `https://ipgeolocation.abstractapi.com/v1?api_key=${this.key}` );        
+    }        
+}
+
+
+
+//Weather
 const weather = {
-    key: KEY,
+    key: OWM_KEY,
     
     baseURL: 'https://api.openweathermap.org/data/2.5/',
 
-    async getForecast( city ) {        
-        let req = await fetch( `${this.baseURL}forecast?appid=${KEY}&q=${city}&units=metric` );    
-        let res = this.validateResponse( req );
-        cache.set('forecast', city, await res);        
-        return res;
+    async getForecast( city ) {                        
+        return await api.get( `${this.baseURL}forecast?appid=${this.key}&q=${city}&units=metric`, 'forecast', city );        
     },
 
     async getCurrentWeather( city ) {        
-        let req = await fetch( `${this.baseURL}weather?appid=${KEY}&q=${city}&units=metric` );    
-        let res = this.validateResponse( req );
-        cache.set('current', city, await res);        
-        return res;
+        return await api.get( `${this.baseURL}weather?appid=${this.key}&q=${city}&units=metric` )                                
     },
 
     async get( type, city ) {         
@@ -45,26 +68,24 @@ const weather = {
             let cached = cache.get(type, city.toLowerCase());
 
             if( !cached ) {
-                if( type === 'current' )
-                    return await this.getCurrentWeather(city.toLowerCase());
-                else if( type === 'forecast' )
-                    return await this.getForecast(city.toLowerCase());
+                let data;
+                if( type === 'current' ) {
+                    data = await this.getCurrentWeather(city.toLowerCase());
+                }                    
+                else if( type === 'forecast' ) {
+                    data = await this.getForecast(city.toLowerCase());
+                }
+                cache.set( type, city, data );
+                return data;
             }
             else {
-                return cache.get(type, city);
+                return cached;
             }        
         }
-    },
-
-    validateResponse(res) {
-        if( res.status !== 200 ) {
-            return false;
-        }
-        else return res.json();
-    }
+    }    
 }
 
 export {
-    geoLocate,    
+    geo,    
     weather    
 }
