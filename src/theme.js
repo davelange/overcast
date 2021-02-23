@@ -4,20 +4,20 @@ const themes = {
     
     subs: [],
 
-    schemes: {
+    schemes: {        
         day: {
-            bg: '#284ba5', 
-            color: '#fff', 
-            accent: '#284ba5',                        
             bgColor: '#5988FF',
-            bgOpacity: .6  
+            bgOpacity: .6,
+            cardBg: '#ffffffdd',
+            color: '#333', 
+            accent: '#284ba5',            
         },
         night: {
-            bg: '#fafafa', 
-            color: '#fff', 
-            accent: '#ffff2e',       
             bgColor: '#040b1d',
-            bgOpacity: .8                  
+            bgOpacity: .8,
+            cardBg: '#ffffff22',               
+            color: '#fff', 
+            accent: '#ffff2e',                               
         },
     },
     
@@ -40,11 +40,15 @@ const themes = {
     },
 
     getIconColor() {
-        return { color: this.theme('bg') };
+        return { color: this.theme('accent') };
     },
 
     getCardColor() {
         return { color: this.theme('accent') };
+    },
+
+    getCardStyle() {
+        return { background: this.theme('cardBg'), color: this.theme('color')}
     },
 
     addSub(fn) {

@@ -1,4 +1,6 @@
-@import url('https://fonts.googleapis.com/css2?family=Barlow:wght@400;600&display=swap');
+/* @import url('https://fonts.googleapis.com/css2?family=Barlow:wght@400;600&display=swap'); */
+/* @import url('https://fonts.googleapis.com/css2?family=Vollkorn:wght@400;600&display=swap'); */
+@import url('https://fonts.googleapis.com/css2?family=Barlow&family=Vollkorn:wght@500&display=swap');
 
 :root {
     --normal: 400;
@@ -72,18 +74,20 @@ h1, h2, h3, p {
 }
 .search__input {
     border: 0;
-    background: 0;
-    font-weight: var(--heavy);
-    flex: 1 0 auto;
+    background: 0;    
+    width: 100%;
     text-align: center;
     padding: 1rem 2rem;
     color: #fff;
     border-bottom: 1px solid #ffffff22;
+    font-size: 2rem;
+    font-family: Volkorn;
+    font-weight: 600;
 }
 .search__submit {
     opacity: .5;
     position: absolute;
-    right: 2rem;
+    right: 8%;
     top: 0;
     bottom: 0;
     margin: auto;
@@ -93,24 +97,11 @@ h1, h2, h3, p {
     margin-bottom: 1rem;;
     position: relative;
 }
-.current::before {
-    width: 50vmax;
-    height: 50vmax;
-    background: #ffffff11;
-    position: absolute;
-    content: "";
-    border-radius: 50%;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    margin: auto;
-    z-index: -1;
-}
 .current__display {
     display: flex;
     justify-content: center;
-    align-items: center;
+    align-items: center;    
+    margin: .5rem 0 .85rem;
 }
 .current__image {
     margin-right: 1rem;   
@@ -118,15 +109,14 @@ h1, h2, h3, p {
     opacity: .9;
 }
 .current__temp {    
-    font-size: 2.5rem;
+    font-size: 2.85rem;
     margin-bottom: .5rem;
     line-height: 1.2;        
+    font-family: Volkorn;
 }
 .current__desc {
-    text-align: center;
-}
-.current__feels {
-    text-align: center;
+    text-align: center;    
+    margin: auto;
 }
 .current__time {
     text-align: center;
@@ -143,9 +133,17 @@ h1, h2, h3, p {
 .current__not-found {
     text-align: center;
 }
+.time {
+    display: flex;
+    align-items: center;
+    margin: 16px auto;
+}
+.time__text {
+    margin-left: 4px;
+}
 .fcast-card {
     margin: .5rem .5rem;
-    background: #ffffff66;
+    background: #ffffffdd;
     border-radius: 10px;
     padding: 1rem;
     align-items: center;
@@ -162,7 +160,8 @@ h1, h2, h3, p {
     margin-right: .75rem;
 }
 .fcast-card__maintemp {
-    font-size: 1rem;    
+    font-size: 2rem;
+    font-family: 'Vollkorn';
 }
 .fcast-card__date {
     width: 20%;
@@ -210,18 +209,20 @@ h1, h2, h3, p {
     .lg-flex__full {
         width: 100%;
     }
+    .search__input {
+        font-size: 2.85rem;
+    }
     .current {
         margin-top: 2rem;
-    }
-    .current::before {
-        width: 30vmax;
-        height: 30vmax;
+    }    
+    .current__desc {
+        font-size: 1.2rem;
     }
     .current__image {
         font-size: 5rem;
     }
     .current__display {
-        margin: 1rem 0;
+        margin: 2rem 0;
     }
     .fcast__extra {
         width: 60%;

@@ -31,7 +31,7 @@ function App() {
 
         <Background />
         
-        <div className="lg-flex__half">
+        <div className="main lg-flex__half">
 
           <Search             
             changeLocation={changeLocation} />

@@ -1,20 +1,19 @@
 import React from 'react';
-import {useParams} from 'react-router-dom';
-import {themes} from '../theme';
+import {location} from '../location';
 import FeatherIcon from 'feather-icons-react';
 
-function Search({changeLocation}) {
-
-    let {city} = useParams();
-
-    const inputVal = React.useRef(null);
+function Search({changeLocation}) {    
     
-    React.useEffect( () => {
-        inputVal.current.value = city;
-    })
+    const inputVal = React.useRef(null);
+
+    location.subscribe( name => {        
+        if( inputVal.current ) {
+            inputVal.current.value = name;   
+        }                
+    })            
 
     function handleSubmit(e) {
-        e.preventDefault();        
+        e.preventDefault();                        
         changeLocation( e.target.elements.city.value );             
     }
     
@@ -38,7 +37,7 @@ function Search({changeLocation}) {
                             icon="search" 
                             width="16" 
                             height="16" 
-                            stroke={themes.getIconColor().color} />
+                            stroke="#fff" />
                 </button>
             </form>            
         </div>

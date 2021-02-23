@@ -8,26 +8,29 @@ import CardExtraInfo from '../components/CardExtraInfo';
 function ForecastCard({i, weather}) {
 
     const [expand, setExpand] = React.useState(false);
+    
 
     return (
         <div 
             className="fcast-card flex" 
-            style={themes.getIconColor()}
+            style={themes.getCardStyle()}
             onClick={ () => setExpand(!expand) }>
             
             <p className="fcast-card__date">{ getForecastDate( i ) }</p>
             
-            <div className="fcast-card__main flex">                                
+            <div className="fcast-card__main flex">          
+
                 <WeatherIcon 
                     data={weather} 
                     className="fcast-card__image"/>
+
                 <div style={themes.getCardColor()}>
                     <h3 className="fcast-card__maintemp">
                         { formatTemp(weather.main.feels_like) }
                     </h3>
-                    <p className="fcast-card__maindesc">
+                    {/* <p className="fcast-card__maindesc">
                         {weather.weather[0].main}
-                    </p>
+                    </p> */}
                 </div>
             </div>
 
