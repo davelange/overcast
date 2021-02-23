@@ -56,7 +56,7 @@ const weather = {
     baseURL: 'https://api.openweathermap.org/data/2.5/',
 
     async getForecast( city ) {                        
-        return await api.get( `${this.baseURL}forecast?appid=${this.key}&q=${city}&units=metric`, 'forecast', city );        
+        return await api.get( `${this.baseURL}forecast?appid=${this.key}&q=${city}&units=metric` );        
     },
 
     async getCurrentWeather( city ) {        

@@ -28,7 +28,7 @@ const themes = {
     },
 
     getAppTheme() {
-        return { background: this.theme('gradient') };
+        return { backgroundImage: this.theme('gradient') };
     },
 
     getIconColor() {

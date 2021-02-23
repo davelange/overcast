@@ -3,8 +3,8 @@ import './assets/css/normalize.css';
 import './assets/css/master.css';
 import './assets/css/weather-icons.min.css';
 import {geo} from './api/requests';
-import {themes} from './theme';
 import Search from './components/Search';
+import Background from './components/Background';
 import CurrentWeather from './containers/CurrentWeather';
 import Forecast from './containers/Forecast';
 
@@ -19,9 +19,9 @@ function App() {
   }, []); 
 
   return (
-    <div className="App lg-flex" style={ themes.getAppTheme() }>      
-
-      <div className="baloon"></div>
+    <div className="App lg-flex">      
+            
+      <Background />
         
       <div className="lg-flex__half">
         <Search 
