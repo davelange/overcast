@@ -1,10 +1,13 @@
 import React from 'react';
+import { useParams } from 'react-router-dom';
 import {weather} from '../api/requests';
 import ForecastCard from '../components/ForecastCard';
 
-function Forecast({city}) {
+function Forecast() {
 
     const [forecast, setForecast] = React.useState();
+
+    let {city} = useParams();
 
     React.useEffect( () =>  {        
         weather.get('forecast', city).then( res => {
@@ -13,6 +16,9 @@ function Forecast({city}) {
                 let filtered = res.list.filter( (item, i) => accept.includes(i) )
                 setForecast(filtered);      
             }   
+            else {
+                setForecast(null);      
+            }
         })       
     }, [city]);
 

@@ -75,7 +75,9 @@ const weather = {
                 else if( type === 'forecast' ) {
                     data = await this.getForecast(city.toLowerCase());
                 }
-                cache.set( type, city, data );
+                if( data ) {
+                    cache.set( type, city, data );
+                }                
                 return data;
             }
             else {

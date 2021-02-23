@@ -1,3 +1,7 @@
+function formatCityURL(str) {
+    return str.toLowerCase().replace(' ', '-');
+}
+
 function formatTemp(n) {
     return `${Math.round(n)}°`; 
 }
@@ -44,6 +48,7 @@ function popCalc(n) {
 }
 
 export {
+    formatCityURL,
     formatTemp,
     windSpeed,
     timeCalc,

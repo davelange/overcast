@@ -2,18 +2,22 @@ import {isDayTime} from './helpers';
 
 const themes = {
     
+    subs: [],
+
     schemes: {
         day: {
             bg: '#284ba5', 
             color: '#fff', 
-            accent: '#284ba5',
-            gradient: 'linear-gradient(100deg, #5988FF, #5988FF66)'
+            accent: '#284ba5',                        
+            bgColor: '#5988FF',
+            bgOpacity: .6  
         },
         night: {
             bg: '#fafafa', 
             color: '#fff', 
-            accent: '#ffff2e',
-            gradient: 'linear-gradient(70deg, #000, #253358)'
+            accent: '#ffff2e',       
+            bgColor: '#040b1d',
+            bgOpacity: .8                  
         },
     },
     
@@ -25,10 +29,14 @@ const themes = {
 
     setPhase( data ) {        
         this.phase = isDayTime(data) ? 'day' : 'night';       
+        this.notifySubs();
     },
 
     getAppTheme() {
-        return { backgroundImage: this.theme('gradient') };
+        return { 
+            background: this.theme('bgColor'), 
+            opacity: this.theme('bgOpacity') 
+        };
     },
 
     getIconColor() {
@@ -37,6 +45,14 @@ const themes = {
 
     getCardColor() {
         return { color: this.theme('accent') };
+    },
+
+    addSub(fn) {
+        this.subs.push(fn);
+    },
+
+    notifySubs() {
+        this.subs.forEach( fn => fn() );
     }
 
 }
