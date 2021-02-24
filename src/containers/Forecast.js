@@ -10,18 +10,29 @@ function Forecast() {
 
     let {city} = useParams();
 
+    
     React.useEffect( () =>  {        
         weather.get('forecast', location.toName(city)).then( res => {
-            if( res ) {
-                let accept = [0,8,16,24,32];
-                let filtered = res.list.filter( (item, i) => accept.includes(i) )
-                setForecast(filtered);      
+            if( res ) {                
+                setForecast( sortForecastToDates(res.list) );      
             }   
             else {
                 setForecast(null);      
             }
         })       
     }, [city]);
+
+    function sortForecastToDates( list ) {
+        let byDates = {};
+        list.forEach( (item, i) => {            
+            let key = item.dt_txt.split(' ')[0] ;            
+            if( !(key in byDates) ) {
+                byDates[key] = [];
+            }
+            byDates[key].push(item);            
+        });
+        return Object.values(byDates).slice(1, 10);
+    }
 
     return(
         <div className="fcast lg-flex__half">
@@ -30,7 +41,7 @@ function Forecast() {
                     key={i}
                     i={i}
                     weather={item} />           
-            )} 
+            )}  
         </div> 
     )
 }   

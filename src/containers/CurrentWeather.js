@@ -4,6 +4,7 @@ import {weather} from '../api/requests';
 import {themes} from '../theme';
 import {location} from '../location';
 import {formatTemp, getLocalTime} from '../helpers';
+import {time} from '../time';
 import WeatherIcon from '../components/WeatherIcon';
 import Time from '../components/Time';
 
@@ -20,7 +21,8 @@ function CurrentWeather() {
                 location.set({
                     city: res.name,
                     country: res.sys.country
-                })                
+                });
+                time.setTimezone(res.timezone)                
                 setCurrent(res);                      
             }   
             else {                
@@ -33,8 +35,7 @@ function CurrentWeather() {
         <div className="current flex">
             { current ? (
                 <> 
-                <Time 
-                    time={getLocalTime(current)} />
+                <Time time={ time.getLocalTime('h:m') } />
 
                 <div className="flex__full flex current__display">
                     <WeatherIcon 
@@ -42,7 +43,7 @@ function CurrentWeather() {
                         className="current__image" />                    
                     <h2 className="current__temp">{formatTemp(current.main.temp)}</h2>
                 </div>
-                <p className="current__desc">{current.weather[0].main}. Feels like {formatTemp(current.main.feels_like)}.</p>
+                <p className="current__desc">{current.weather[0].main}, feels like {formatTemp(current.main.feels_like)}.</p>
                 </>
             ) : (
                 <>

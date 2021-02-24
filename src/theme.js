@@ -1,5 +1,5 @@
 import {Publisher} from './publisher';
-import {isDayTime} from './helpers';
+import {time} from './time';
 
 const Theme = function() {
 
@@ -9,7 +9,7 @@ const Theme = function() {
         day: {
             bgColor: '#5988FF',
             bgOpacity: .6,
-            cardBg: '#ffffffdd',
+            cardBg: 'rgba(255, 255, 255, 0.3)',
             color: '#333', 
             accent: '#284ba5',            
         },
@@ -29,7 +29,7 @@ const Theme = function() {
     }
 
     this.setPhase = function( data ) {        
-        this.phase = isDayTime(data) ? 'day' : 'night';       
+        this.phase = time.isDayTime(data) ? 'day' : 'night';       
         this.notifySubs();
     }
 
@@ -46,6 +46,10 @@ const Theme = function() {
 
     this.getCardColor = function() {
         return { color: this.theme('accent') };
+    }
+
+    this.getGraphColor = function() {
+        return this.theme('accent');
     }
 
     this.getCardStyle = function() {

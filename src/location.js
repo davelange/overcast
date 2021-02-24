@@ -29,6 +29,9 @@ const Location = function() {
     }
 }
 
+Location.prototype = Object.create( Publisher.prototype );
+Location.prototype.constructor = Location;
+
 const location = new Location();
 
 export {
