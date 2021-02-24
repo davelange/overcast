@@ -1,10 +1,11 @@
+import {Publisher} from './publisher';
 import {isDayTime} from './helpers';
 
-const themes = {
-    
-    subs: [],
+const Theme = function() {
 
-    schemes: {        
+    Publisher.call(this);
+
+    this.schemes = {        
         day: {
             bgColor: '#5988FF',
             bgOpacity: .6,
@@ -19,47 +20,43 @@ const themes = {
             color: '#fff', 
             accent: '#ffff2e',                               
         },
-    },
+    }
     
-    phase: '',
+    this.phase = '';
 
-    theme(k) {
+    this.theme = function(k) {
         return this.phase ? this.schemes[this.phase][k] : '';
-    },
+    }
 
-    setPhase( data ) {        
+    this.setPhase = function( data ) {        
         this.phase = isDayTime(data) ? 'day' : 'night';       
         this.notifySubs();
-    },
+    }
 
-    getAppTheme() {
+    this.getAppTheme = function() {
         return { 
             background: this.theme('bgColor'), 
             opacity: this.theme('bgOpacity') 
         };
-    },
-
-    getIconColor() {
-        return { color: this.theme('accent') };
-    },
-
-    getCardColor() {
-        return { color: this.theme('accent') };
-    },
-
-    getCardStyle() {
-        return { background: this.theme('cardBg'), color: this.theme('color')}
-    },
-
-    addSub(fn) {
-        this.subs.push(fn);
-    },
-
-    notifySubs() {
-        this.subs.forEach( fn => fn() );
     }
 
+    this.getIconColor = function() {
+        return { color: this.theme('accent') };
+    }
+
+    this.getCardColor = function() {
+        return { color: this.theme('accent') };
+    }
+
+    this.getCardStyle = function() {
+        return { background: this.theme('cardBg'), color: this.theme('color')}
+    }
 }
+
+Theme.prototype = Object.create( Publisher.prototype );
+Theme.prototype.constructor = Theme;
+
+const themes = new Theme(); 
 
 export {
     themes

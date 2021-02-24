@@ -1,36 +1,35 @@
-const location = {
+import {Publisher} from './publisher';
 
-    city: '',
+const Location = function() {
 
-    country: '',
+    Publisher.call(this);
 
-    subs: [],
+    this.city = '';
 
-    toURL() {
-        return this.name.toLowerCase().replace(' ', '-');
-    },
+    this.country = '';    
 
-    getName() {
+    this.toURL = function(str) {
+        return str.toLowerCase().replace(/\s/g, '-');        
+    }
+
+    this.toName = function(str) {
+        return str.replace(/-/g, ' ');        
+    }
+
+    this.getName = function() {
         return this.city&&this.country ? 
             `${this.city}, ${this.country}` : this.city;
-    },    
+    }
 
-    set(args) {
+    this.set = function(args) {
         for( let key in args ) {
             this[key] = args[key];
         }
-        this.notifySubs();
-    },
-
-    subscribe(fn) {
-        this.subs.push(fn);
-    },
-
-    notifySubs() {
-        this.subs.forEach( fn => fn( this.getName() ) );
+        this.notifySubs(this.getName());
     }
-    
 }
+
+const location = new Location();
 
 export {
     location

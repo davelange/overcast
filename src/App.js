@@ -1,10 +1,10 @@
 import React from 'react';
-import {useHistory, Route} from 'react-router-dom';
 import './assets/css/normalize.css';
 import './assets/css/master.css';
 import './assets/css/weather-icons.min.css';
+import {useHistory, Route} from 'react-router-dom';
 import {geo} from './api/requests';
-import {formatCityURL} from './helpers';
+import {location} from './location';
 import Search from './components/Search';
 import Background from './components/Background';
 import CurrentWeather from './containers/CurrentWeather';
@@ -15,13 +15,12 @@ function App() {
   const history = useHistory()
   
   React.useEffect( () => {                
-    geo.locate().then( res => history.push(`/${formatCityURL( res.city )}`)  );   
+    geo.locate().then( res => history.push(`/${location.toURL( res.city )}`)  );   
+    // eslint-disable-next-line 
   }, []); 
 
   function changeLocation(str) {
-    if( str ) {      
-      history.push(`/${formatCityURL( str )}`);   
-    }    
+    history.push(`/${location.toURL( str )}`);      
   }  
 
   return (

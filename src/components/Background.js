@@ -5,7 +5,7 @@ function Background() {
 
     const [style, setStyle] = React.useState( themes.getAppTheme() );
 
-    themes.addSub( () => setStyle( themes.getAppTheme() ) );    
+    themes.subscribe( () => setStyle( themes.getAppTheme() ) );    
     
     return (
         <div className="bg">

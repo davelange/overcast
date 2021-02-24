@@ -1,6 +1,7 @@
 import React from 'react';
 import { useParams } from 'react-router-dom';
 import {weather} from '../api/requests';
+import {location} from '../location';
 import ForecastCard from '../components/ForecastCard';
 
 function Forecast() {
@@ -10,7 +11,7 @@ function Forecast() {
     let {city} = useParams();
 
     React.useEffect( () =>  {        
-        weather.get('forecast', city).then( res => {
+        weather.get('forecast', location.toName(city)).then( res => {
             if( res ) {
                 let accept = [0,8,16,24,32];
                 let filtered = res.list.filter( (item, i) => accept.includes(i) )
@@ -23,7 +24,7 @@ function Forecast() {
     }, [city]);
 
     return(
-        <div className="lg-flex__half">
+        <div className="fcast lg-flex__half">
             { forecast && forecast.map( (item, i) =>           
                 <ForecastCard 
                     key={i}

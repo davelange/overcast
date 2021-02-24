@@ -14,7 +14,10 @@ function Search({changeLocation}) {
 
     function handleSubmit(e) {
         e.preventDefault();                        
-        changeLocation( e.target.elements.city.value );             
+        let input = e.target.elements.city.value;
+        if( input ) {
+            changeLocation( input );             
+        }        
     }
     
     return( 

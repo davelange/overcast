@@ -14,7 +14,7 @@ function CurrentWeather() {
     let {city} = useParams();    
 
     React.useEffect( () => {        
-        weather.get('current', city).then( res => {
+        weather.get('current', location.toName(city)).then( res => {
             if( res ) {
                 themes.setPhase(res);       
                 location.set({

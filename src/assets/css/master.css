@@ -81,7 +81,7 @@ h1, h2, h3, p {
     color: #fff;
     border-bottom: 1px solid #ffffff22;
     font-size: 2rem;
-    font-family: Volkorn;
+    font-family: Vollkorn;
     font-weight: 600;
 }
 .search__submit {
@@ -112,7 +112,7 @@ h1, h2, h3, p {
     font-size: 2.85rem;
     margin-bottom: .5rem;
     line-height: 1.2;        
-    font-family: Volkorn;
+    font-family: Vollkorn;
 }
 .current__desc {
     text-align: center;    
@@ -141,8 +141,13 @@ h1, h2, h3, p {
 .time__text {
     margin-left: 4px;
 }
+/* .fcast {
+    display: flex;
+    flex-wrap: wrap;    
+} */
 .fcast-card {
-    margin: .5rem .5rem;
+    width: 90%;
+    margin: .5rem auto;
     background: #ffffffdd;
     border-radius: 10px;
     padding: 1rem;
@@ -211,7 +216,7 @@ h1, h2, h3, p {
     }
     .search__input {
         font-size: 2.85rem;
-    }
+    }    
     .current {
         margin-top: 2rem;
     }    
@@ -224,6 +229,10 @@ h1, h2, h3, p {
     .current__display {
         margin: 2rem 0;
     }
+    /* .fcast-card {
+        width: 50%;
+        padding: 0;
+    } */
     .fcast__extra {
         width: 60%;
     }    
