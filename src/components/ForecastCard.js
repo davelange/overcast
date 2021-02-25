@@ -21,6 +21,8 @@ function ForecastCard({i, weather}) {
             return weather.filter( item => item.dt_txt.includes('09:00:00'))[0];        
         }        
     }    
+
+    themes.subscribe( () => setExpand( false ));    
     
     return (
         <div className="fcast-card" 

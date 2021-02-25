@@ -3,17 +3,17 @@ import {themes} from '../theme';
 import {Graph} from '../graph';
 import {time} from '../time';
 
-function WeatherGraph({i, data}) {    
+function WeatherGraph({i, data}) {        
 
-    React.useEffect( () => init() );
+    // eslint-disable-next-line 
+    React.useEffect( () => init(), [data] );
 
     function init() {
         const tempGraph = new Graph({
             el: document.querySelector(`.graph__svg_${i}`),
             stroke: themes.getGraphColor(),
             data: data,        
-        })         
-        console.log(tempGraph)
+        })                 
         tempGraph.draw();    
     }        
 

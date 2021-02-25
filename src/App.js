@@ -30,13 +30,15 @@ function App() {
 
         <Background />
         
-        <div className="main lg-flex__half">
+        <div className="lg-flex__half">
+          <section className="main">
 
           <Search             
             changeLocation={changeLocation} />
           
           <CurrentWeather /> 
-  
+          
+          </section>
         </div>
   
         <Forecast />           

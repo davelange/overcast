@@ -30,7 +30,8 @@ const Theme = function() {
 
     this.setPhase = function( data ) {        
         this.phase = time.isDayTime(data) ? 'day' : 'night';       
-        this.notifySubs();
+        console.log('phase is set')
+        this.notifySubs( this.getAppTheme() );
     }
 
     this.getAppTheme = function() {

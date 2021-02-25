@@ -4,14 +4,14 @@ import FeatherIcon from 'feather-icons-react';
 
 function Search({changeLocation}) {    
     
-    const inputVal = React.useRef(null);
+    const inputVal = React.useRef(null);    
 
     location.subscribe( name => {        
         if( inputVal.current ) {
             inputVal.current.value = name;   
         }                
     })            
-
+    
     function handleSubmit(e) {
         e.preventDefault();                        
         let input = e.target.elements.city.value;
@@ -26,8 +26,7 @@ function Search({changeLocation}) {
                 onSubmit={ e => handleSubmit(e) } 
                 className="search">
 
-                <input
-                    onFocus={ e => e.target.select() }
+                <input                    
                     ref={inputVal}
                     className="search__input"
                     type="text" 

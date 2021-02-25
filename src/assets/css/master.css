@@ -56,15 +56,23 @@ h1, h2, h3, p {
     width: 100%;
     height: 100%;
     top: 0;           
-    transition: all .5s ease;    
+    opacity: 0;
+    transition: all .5s ease;        
 }
-
 @keyframes float-sky {
     0% {
         transform: scale(1.1) translateX(0%);
     }    
     100% {
         transform: scale(1.4) translateX(5%);
+    }
+}
+@keyframes fade-in {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 100%;
     }
 }
 .search {
@@ -75,7 +83,7 @@ h1, h2, h3, p {
 .search__input {
     border: 0;
     background: 0;    
-    width: 100%;
+    width: 80%;
     text-align: center;
     padding: 1rem 2rem;
     color: #fff;
@@ -96,6 +104,7 @@ h1, h2, h3, p {
     padding: 0 2rem 1rem;    
     margin-bottom: 1rem;;
     position: relative;
+    animation: fade-in ease 1s 0s forwards;
 }
 .current__display {
     display: flex;
@@ -158,6 +167,7 @@ h1, h2, h3, p {
     text-align: center;
     background: #ffffffdd;
     color: #303030;
+    animation: fade-in ease 1s 0s forwards;
 }
 .fcast-card__main {    
     justify-content: center;
@@ -264,6 +274,10 @@ h1, h2, h3, p {
     }
     .lg-flex__full {
         width: 100%;
+    }
+    .main {
+        position: sticky;
+        top: 10%;
     }
     .search__input {
         font-size: 2.85rem;

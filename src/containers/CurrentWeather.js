@@ -17,12 +17,12 @@ function CurrentWeather() {
     React.useEffect( () => {        
         weather.get('current', location.toName(city)).then( res => {
             if( res ) {
+                time.setTimezone(res.timezone);        
                 themes.setPhase(res);       
                 location.set({
                     city: res.name,
                     country: res.sys.country
-                });
-                time.setTimezone(res.timezone)                
+                });                        
                 setCurrent(res);                      
             }   
             else {                
@@ -43,7 +43,9 @@ function CurrentWeather() {
                         className="current__image" />                    
                     <h2 className="current__temp">{formatTemp(current.main.temp)}</h2>
                 </div>
-                <p className="current__desc">{current.weather[0].main}, feels like {formatTemp(current.main.feels_like)}.</p>
+                <p className="current__desc">
+                    {current.weather[0].main}, feels like {formatTemp(current.main.feels_like)}.
+                </p>
                 </>
             ) : (
                 <>
